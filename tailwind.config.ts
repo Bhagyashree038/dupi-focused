@@ -22,10 +22,32 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+          light: "hsl(var(--secondary-light))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+          light: "hsl(var(--accent-light))",
+        },
+        // Travel-specific colors
+        travel: {
+          blue: "hsl(var(--travel-blue))",
+          green: "hsl(var(--travel-green))",
+        },
+        temple: {
+          gold: "hsl(var(--temple-gold))",
+        },
+        beach: {
+          blue: "hsl(var(--beach-blue))",
+        },
+        food: {
+          orange: "hsl(var(--food-orange))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -34,10 +56,6 @@ export default {
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",

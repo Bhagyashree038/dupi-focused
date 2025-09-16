@@ -1,13 +1,54 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import HeroSection from "@/components/HeroSection";
+import PreferenceSelector from "@/components/PreferenceSelector";
+import TravelPlan from "@/components/TravelPlan";
+import ChatBot from "@/components/ChatBot";
+import type { PreferenceData } from "@/components/PreferenceSelector";
 
 const Index = () => {
+  const [currentView, setCurrentView] = useState<'hero' | 'preferences' | 'plan'>('hero');
+  const [preferences, setPreferences] = useState<PreferenceData | null>(null);
+  const [showChat, setShowChat] = useState(false);
+
+  const handleGetStarted = () => {
+    setCurrentView('preferences');
+  };
+
+  const handlePreferencesSubmit = (preferenceData: PreferenceData) => {
+    setPreferences(preferenceData);
+    setCurrentView('plan');
+  };
+
+  const handleShowChat = () => {
+    setShowChat(true);
+  };
+
+  const handleCloseChat = () => {
+    setShowChat(false);
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <main className="min-h-screen">
+      {currentView === 'hero' && (
+        <HeroSection onGetStarted={handleGetStarted} />
+      )}
+      
+      {currentView === 'preferences' && (
+        <PreferenceSelector onSubmit={handlePreferencesSubmit} />
+      )}
+      
+      {currentView === 'plan' && preferences && (
+        <TravelPlan 
+          preferences={preferences} 
+          onShowChat={handleShowChat}
+        />
+      )}
+      
+      <ChatBot 
+        isOpen={showChat}
+        onClose={handleCloseChat}
+      />
+    </main>
   );
 };
 
